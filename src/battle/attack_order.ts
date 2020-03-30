@@ -7,9 +7,9 @@ interface OrderScenario {
 
 class ScenarioBySpeed implements OrderScenario {
   call(alpha: Pokemon, beta: Pokemon): Maybe<Pokemon> {
-    if(alpha.speed > beta.speed) {
+    if(alpha.speed().base_stat > beta.speed().base_stat) {
       return new Some(alpha)
-    } else if(beta.speed > alpha.speed) {
+    } else if(beta.speed().base_stat > alpha.speed().base_stat) {
       return new Some(beta)
     } else {
       return new None<Pokemon>()
