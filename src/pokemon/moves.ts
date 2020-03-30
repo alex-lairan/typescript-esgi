@@ -27,4 +27,8 @@ export class MovePool {
     attack3.tee((move) => this.moves.push(move))
     attack4.tee((move) => this.moves.push(move))
   }
+
+  get(indice) {
+    return this.moves[indice]
+  }
 }

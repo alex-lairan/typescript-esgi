@@ -7,9 +7,9 @@ interface OrderScenario {
 
 class ScenarioBySpeed implements OrderScenario {
   call(alpha: Pokemon, beta: Pokemon): Maybe<Pokemon> {
-    if(alpha.speed().base_stat > beta.speed().base_stat) {
+    if(alpha.speed().baseStat > beta.speed().baseStat) {
       return new Some(alpha)
-    } else if(beta.speed().base_stat > alpha.speed().base_stat) {
+    } else if(beta.speed().baseStat > alpha.speed().baseStat) {
       return new Some(beta)
     } else {
       return new None<Pokemon>()
@@ -33,7 +33,7 @@ export class AttackOrder {
   call(seed = Math.random): Pokemon {
     return this.scenario.reduce((acc:Maybe<Pokemon>, scenario) => {
       return acc.or(() => scenario.call(this.alpha, this.beta))
-    }, new None<Pokemon>()).value_or(this.random_pokemon(seed))
+    }, new None<Pokemon>()).valueOr(this.random_pokemon(seed))
   }
 
   private random_pokemon(seed): Pokemon {

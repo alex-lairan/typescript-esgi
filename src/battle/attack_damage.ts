@@ -14,8 +14,8 @@ export class AttackDamage {
     return this.formula(
       this.attacker.level,
       move.power,
-      this.attacker.attack().base_stat,
-      this.defender.defense().base_stat
+      this.attacker.attack().baseStat,
+      this.defender.defense().baseStat
     )
   }
 

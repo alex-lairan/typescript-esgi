@@ -1,8 +1,8 @@
 export class Stat {
-  base_stat: number
+  baseStat: number
 
-  constructor(base_stat: number) {
-    this.base_stat = base_stat
+  constructor(baseStat: number) {
+    this.baseStat = baseStat
   }
 }
 

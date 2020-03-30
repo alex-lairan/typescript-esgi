@@ -1,4 +1,5 @@
 import { Stats, Stat } from "./pokemon/stats"
+import { MovePool } from "./pokemon/moves"
 
 export class Pokemon {
   SPEED = "speed"
@@ -9,9 +10,16 @@ export class Pokemon {
   name: string
   level: number
 
+  hp: number
+  maxHp: number
+
+  moves: MovePool
+
   private stats: Stats
 
-  constructor(id: number, name: string, level: number, speed: Stat, attack: Stat, defense: Stat) {
+  constructor(id: number, name: string, level: number, speed: Stat,
+              attack: Stat, defense: Stat, hp: number, maxHp: number,
+              moves: MovePool) {
     this.id    = id
     this.name  = name
     this.level = level
@@ -19,6 +27,11 @@ export class Pokemon {
     this.stats.define(this.SPEED, speed)
     this.stats.define(this.ATTACK, attack)
     this.stats.define(this.DEFENSE, defense)
+
+    this.hp     = hp
+    this.maxHp = maxHp
+
+    this.moves = moves
   }
 
   speed() {
@@ -43,6 +56,9 @@ export class PokemonBuilder {
   private attack: Stat = new Stat(0)
   private defense: Stat = new Stat(0)
 
+  private hp = 0
+  private maxHp = 0
+
   constructor(id: number, name: string) {
     this.id   = id
     this.name = name
@@ -56,6 +72,8 @@ export class PokemonBuilder {
       this.speed,
       this.attack,
       this.defense,
+      this.hp,
+      this.maxHp,
     )
   }
 
@@ -76,6 +94,16 @@ export class PokemonBuilder {
 
   setLevel(value: number): PokemonBuilder {
     this.level = value
+    return this
+  }
+
+  setHp(value: number): PokemonBuilder {
+    this.hp = value
+    return this
+  }
+
+  setMaxHp(value: number): PokemonBuilder {
+    this.maxHp = value
     return this
   }
 }

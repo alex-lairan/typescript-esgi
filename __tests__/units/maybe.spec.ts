@@ -8,10 +8,10 @@ describe("Some", () => {
     })
   })
 
-  describe("#value_or", () => {
+  describe("#valueOr", () => {
     it("returns the current value", () => {
       const some = new Some(5)
-      expect(some.value_or(10)).toEqual(5)
+      expect(some.valueOr(10)).toEqual(5)
     })
   })
 })
@@ -24,10 +24,10 @@ describe("None", () => {
     })
   })
 
-  describe("#value_or", () => {
+  describe("#valueOr", () => {
     it("returns the new value", () => {
       const none = new None<number>()
-      expect(none.value_or(10)).toEqual(10)
+      expect(none.valueOr(10)).toEqual(10)
     })
   })
 })

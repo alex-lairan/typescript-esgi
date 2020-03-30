@@ -1,7 +1,9 @@
 export abstract class Maybe<T> {
   abstract or<T1>(f: () => Maybe<T1>): Maybe<T|T1>
-  abstract value_or(lhs: T): T
+  abstract valueOr(lhs: T): T
   abstract tee(f: (val: T) => void)
+
+  abstract isSuccess(): Boolean
 }
 
 export class Some<T> extends Maybe<T> {
@@ -16,12 +18,16 @@ export class Some<T> extends Maybe<T> {
     return this
   }
 
-  value_or(lhs: T): T {
+  valueOr(lhs: T): T {
     return this.value
   }
 
   tee(f: (val: T) => void) {
     f(this.value)
+  }
+
+  isSuccess(): Boolean {
+    return true
   }
 }
 
@@ -30,10 +36,14 @@ export class None<T> extends Maybe<T> {
     return f()
   }
 
-  value_or(lhs: T): T {
+  valueOr(lhs: T): T {
     return lhs
   }
 
   tee(f: (val: T) => void) {
+  }
+
+  isSuccess(): Boolean {
+    return false
   }
 }
