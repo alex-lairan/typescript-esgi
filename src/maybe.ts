@@ -8,8 +8,8 @@ export class Some<T> extends Maybe<T> {
   value: T
 
   constructor(value: T) {
-    super();
-    this.value = value;
+    super()
+    this.value = value
   }
 
   or<T1>(f: () => Maybe<T1>): Maybe<T|T1> {

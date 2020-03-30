@@ -1,5 +1,5 @@
-import { Pokemon } from "../pokemon";
-import { Move } from "../pokemon/moves";
+import { Pokemon } from "../pokemon"
+import { Move } from "../pokemon/moves"
 
 export class AttackDamage {
   attacker: Pokemon

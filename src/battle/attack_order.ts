@@ -1,5 +1,5 @@
-import { Pokemon } from "../pokemon";
-import { Maybe, None, Some } from "../maybe";
+import { Pokemon } from "../pokemon"
+import { Maybe, None, Some } from "../maybe"
 
 interface OrderScenario {
   call(alpha: Pokemon, beta: Pokemon): Maybe<Pokemon>
