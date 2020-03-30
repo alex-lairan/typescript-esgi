@@ -30,14 +30,14 @@ export class AttackOrder {
     this.beta  = beta
   }
 
-  call(seed: number = Math.random()): Pokemon {
+  call(seed = Math.random): Pokemon {
     return this.scenario.reduce((acc:Maybe<Pokemon>, scenario) => {
       return acc.or(() => scenario.call(this.alpha, this.beta))
     }, new None<Pokemon>()).value_or(this.random_pokemon(seed))
   }
 
-  private random_pokemon(seed: number): Pokemon {
-    const indice = Math.floor(2 * seed)
+  private random_pokemon(seed): Pokemon {
+    const indice = Math.floor(2 * seed())
     return [this.alpha, this.beta][indice]
   }
 }
