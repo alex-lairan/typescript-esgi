@@ -52,16 +52,19 @@ export class PokemonBuilder {
   private id: number
   private level = 1
 
-  private speed: Stat = new Stat(0)
-  private attack: Stat = new Stat(0)
-  private defense: Stat = new Stat(0)
+  private speed: Stat = new Stat(1)
+  private attack: Stat = new Stat(1)
+  private defense: Stat = new Stat(1)
 
   private hp = 0
   private maxHp = 0
 
-  constructor(id: number, name: string) {
-    this.id   = id
-    this.name = name
+  private moves: MovePool
+
+  constructor(id: number, name: string, moves: MovePool) {
+    this.id    = id
+    this.name  = name
+    this.moves = moves
   }
 
   build(): Pokemon {
@@ -74,6 +77,7 @@ export class PokemonBuilder {
       this.defense,
       this.hp,
       this.maxHp,
+      this.moves
     )
   }
 
@@ -88,6 +92,7 @@ export class PokemonBuilder {
   }
 
   setDefense(value: number): PokemonBuilder {
+    if(value === 0) { return this; } // Exception
     this.defense = new Stat(value)
     return this
   }

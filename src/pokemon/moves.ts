@@ -1,4 +1,4 @@
-import { Maybe } from "../maybe"
+import { Maybe, None } from "../maybe"
 
 export class Move {
   pp: number
@@ -19,7 +19,8 @@ export class Move {
 export class MovePool {
   moves: Array<Move>
 
-  constructor(attack1: Move, attack2: Maybe<Move>, attack3: Maybe<Move>, attack4: Maybe<Move>) {
+  constructor(attack1: Move, attack2: Maybe<Move> = new None<Move>(),
+              attack3: Maybe<Move> = new None<Move>(), attack4: Maybe<Move> = new None<Move>()) {
     this.moves = new Array<Move>()
     this.moves.push(attack1)
 

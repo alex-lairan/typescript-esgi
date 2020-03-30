@@ -51,6 +51,6 @@ export class Battle {
   }
 
   private isFinished() {
-    return this.alpha.hp === 0 || this.beta.hp === 0
+    return this.alpha.hp <= 0 || this.beta.hp <= 0
   }
 }
